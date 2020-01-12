@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>KL &#8212; GaussRF 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Circular embedding" href="cir_em.html" />
+    <link rel="prev" title="Welcome to GaussRF’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-KL_code">
+<span id="kl"></span><h1>KL<a class="headerlink" href="#module-KL_code" title="Permalink to this headline">¶</a></h1>
+<p>This file contains prototype scripts for the approximate simulation
+of 1-D and 2-D Gaussian random fields with a specified covariance function
+C(x,y)</p>
+<dl class="function">
+<dt id="KL_code.KL_1DNys">
+<code class="sig-prename descclassname">KL_code.</code><code class="sig-name descname">KL_1DNys</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">M</em>, <em class="sig-param">a</em>, <em class="sig-param">b</em>, <em class="sig-param">Cov</em>, <em class="sig-param">quad='EOLE'</em><span class="sig-paren">)</span><a class="headerlink" href="#KL_code.KL_1DNys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Karhunen-Loeve in 1-Dimension using Nystrom method.</p>
+<p>Parameters:</p>
+<p>N: Order of the Karhunen-Loeve expansion.</p>
+<p>M: number of quadrature intervals . N &lt;=M</p>
+<p>a,b: domain of simulation, X_t for t in [a,b]</p>
+<p>Cov: The covariance function, a bivariate function</p>
+<p>quad: Quadrature used.”EOLE” for the EOLE method. I tried Gauss-Legendre
+before and there was an issue with inaccurate simulation at the end
+points of the simulation domain
+—–
+output
+—–
+X: a 1-D array of the random field</p>
+<p>phi: a 2-D arrray whose columns are the eigenfunctions</p>
+<p>L: an 1-D array of the eigenvalues.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="KL_code.KL_2DNys">
+<code class="sig-prename descclassname">KL_code.</code><code class="sig-name descname">KL_2DNys</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">M</em>, <em class="sig-param">lims</em>, <em class="sig-param">Cov</em>, <em class="sig-param">quad='EOLE'</em><span class="sig-paren">)</span><a class="headerlink" href="#KL_code.KL_2DNys" title="Permalink to this definition">¶</a></dt>
+<dd><p>N: The order of the Karhunen-Loeve expansion.
+M: M = [M1,M2] number of grid points along x and y direction.
+lims: lims = [a,b,c,d] simulation domain is [a,b] x [c,d]
+Cov: the covariance function. Should be given as c(x,y), x and y bivariate.
+quad: the quadrature method used. EOLE only implemented for now.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">GaussRF</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">KL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cir_em.html">Circular embedding</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to GaussRF’s documentation!</a></li>
+      <li>Next: <a href="cir_em.html" title="next chapter">Circular embedding</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, khaya Steve.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/KL.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -85,40 +85,4 @@ def circ_embed2D(n,m,lims,R):
         
     raise ValueError("Could not find a positive definite embedding")
     lam = np.sqrt(lam)
-test = "2D" # set variable for testing the circulant embedding algorithm.                        
-if __name__ == "__main__":
-    if test == "1D":
-        h=0.01 # Hurst parameter for fractional Brownian motion. 
-        l = 1.0 # parameter for the exponential covariance
-        g= 10
-        N = 2**g 
-        #t_vals = np.linspace(0,1.,N+1)
-        t_vals = np.linspace(-5.,5.,N)
-        def Cov(k,H=h):
-            return (np.abs(k-1)**(2*H) -2*np.abs(k)**(2*H) + np.abs(k+1)**(2*H))/2
-        def exp_cov(r, l =l):
-            return np.exp(-r/l)
-        X = circ_embed1D(g,-5.,5.,exp_cov)
-        #X = circ_embed1D(g,0.,float(N),Cov) # simulate a fractional Gaussian noise.
-        #X2 = np.insert((1./N)**h*np.cumsum(X),0,0) # fractional Brownian motion + starting point
-        plt.plot(t_vals,X)
-        plt.xlim([-5,5])
-        #plt.title(" H = {:.2f}".format(h))
-        #plt.savefig("circ_embed_fBm.pdf")
-        plt.title(" Exponential covariance, scale length l = {:.1f}".format(l))
-        plt.savefig("circ_embed1D_exp.pdf")
-        plt.show()
-    elif test == "2D":
-        l1 = 15 # scale length in x/y direction
-        l2 = 50 # scale length in x/y direction
-        def R(x,y, l1 = l1, l2 = l2):
-            A  = np.array([[3,1],[1,2]])
-            arg = ( (x/l1)**2*A[1,1] + (A[0,1] + A[1,0])*(x/l1)*(y/l2)
-                    + (y/l2)**2*A[0,0] )
-            return np.exp(-np.sqrt(arg))
-        lims = [1.,383.,1.,511.] # limits: dx = 1, dy =1
-        field1, field2 = circ_embed2D(383,511,lims,R)
-        plt.title(r' $l_1$ = {}, $l_2$ = {}'.format(l1,l2))
-        plt.imshow(field1)
-        plt.savefig('circ_embed2D_aniso.pdf')    
-        plt.show()
+                       
